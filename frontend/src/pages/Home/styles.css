@@ -1,0 +1,24 @@
+.home-form-container {
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.home-card-bottom-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 20px 10px;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.home-card-bottom-container h2 {
+    color: #4D41C0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    min-height: 40px;
+}
