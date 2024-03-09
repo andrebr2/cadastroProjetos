@@ -3,7 +3,7 @@ import { errorInterceptor, responseInterceptor } from "./interceptors";
 import { Environment } from "environment";
 
 const Api = axios.create({
-    baseURL: Environment.URL_BASE,
+    baseURL: Environment.BASE_URL,
 })
 
 Api.interceptors.response.use(

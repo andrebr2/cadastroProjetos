@@ -4,17 +4,17 @@ import { Api } from "../axios-config";
 
 interface IListagemTime {
 
-    id: number;
-    name: string;
-    projectId: number;
+    team_id: number;
+    team_name: string;
+    project_id: number;
 
 }
 
 interface IDetalheTime {
 
-    id: number;
-    name: string;
-    projectId: number;
+    team_id: number;
+    team_name: string;
+    project_id: number;
 
 }
 
@@ -81,7 +81,7 @@ const create = async (dados: Omit<IDetalheTime, 'id'>): Promise<number | Error> 
 
         if (data) {
 
-            return data.id;
+            return data.team_id;
 
         }
 

@@ -4,8 +4,8 @@ import { Api } from "../axios-config";
 
 interface IListagemProjeto {
 
-    id: number;
-    name: string;
+    project_id: number;
+    project_name: string;
     goal: string;
     startDate: Date;
     finalDate: Date;
@@ -15,8 +15,8 @@ interface IListagemProjeto {
 
 interface IDetalheProjeto {
 
-    id: number;
-    name: string;
+    project_id: number;
+    project_name: string;
     goal: string;
     startDate: Date;
     finalDate: Date;
@@ -87,7 +87,7 @@ const create = async (dados: Omit<IDetalheProjeto, 'id'>): Promise<number | Erro
 
         if (data) {
 
-            return data.id;
+            return data.project_id;
 
         }
 

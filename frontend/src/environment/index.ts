@@ -19,6 +19,6 @@ export const Environment = {
     /**
      * Url base de consulta dos dados desta aplicação
      */
-    URL_BASE: 'http://locahost:8080',
+    BASE_URL: 'http://locahost:8080',
 
 };

@@ -4,26 +4,26 @@ import { Api } from "../axios-config";
 
 interface IListagemMembro {
 
-    id: number;
-    name: string;
-    adress: string;
-    birthdate: Date;
-    gender: number;
-    race: number;
-    role: number;
+    member_id: number;
+    member_name: string;
+    member_address: string;
+    member_birthdate: Date;
+    member_gender: number;
+    member_race: number;
+    member_role: number;
     teamId: number;
 
 }
 
 interface IDetalheMembro {
 
-    id: number;
-    name: string;
-    adress: string;
-    birthdate: Date;
-    gender: number;
-    race: number;
-    role: number;
+    member_id: number;
+    member_name: string;
+    member_adress: string;
+    member_birthdate: Date;
+    member_gender: number;
+    member_race: number;
+    member_role: number;
     teamId: number;
 
 }
@@ -91,7 +91,7 @@ const create = async (dados: Omit<IDetalheMembro, 'id'>): Promise<number | Error
 
         if (data) {
 
-            return data.id;
+            return data.member_id;
 
         }
 
