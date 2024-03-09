@@ -30,7 +30,20 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      */
 }
 
+import { useEffect } from "react";
+import { getAll } from "services/api/MembrosService/MembrosService"
+
 function Member() {
+
+    const getMembros = async () => {
+        await getAll();
+    }
+
+    useEffect(() => {
+        getMembros();
+    }, [])
+
+
     return (
 
         <div className="pages-form-container">
@@ -66,4 +79,4 @@ function Member() {
     )
 }
 
-export default Member();
+export default Member;

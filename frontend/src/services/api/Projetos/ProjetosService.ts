@@ -1,7 +1,6 @@
 import { Environment } from "environment";
 import { Api } from "../axios-config";
 
-
 interface IListagemProjeto {
 
     project_id: number;
@@ -25,122 +24,97 @@ interface IDetalheProjeto {
 }
 
 type TProjetosComTotalCount = {
-
-    data: IListagemProjeto[];
-    totalCount: number;
-
-}
-
-const getAll = async (page = 1, filter = ''): Promise<TProjetosComTotalCount | Error> => {
-
-    try {
-
-        const urlRelative = `/project?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&name_like=${filter}`
-
-        const { data, headers } = await Api.get(urlRelative);
-
-        if (data) {
-            return {
-                data,
-                totalCount: Number(headers['x-total-count']) || Environment.LIMITE_DE_LINHAS,
-            };
-        }
-
-        return new Error('Erro ao listar registros.');
-
-    } catch (error) {
-        console.error(error);
-        return new Error((error as { message: string }).message) || ('Erro ao listar registros.');
-    }
-
+  data: IListagemProjeto[];
+  totalCount: number;
 };
 
-const getById = async (id: number): Promise<IDetalheProjeto | Error> => {
+export const getAll = async (): Promise<any | Error> => {
+  try {
+    const urlRelative = `/projeto`;
 
-    try {
+    const { data} = await Api.get(urlRelative);
 
-        const { data } = await Api.get(`/project/${id}`);
-
-        if (data) {
-
-            return data;
-
-        }
-
-        return new Error('Erro ao consultar registro.');
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao consultar registro.');
-
+    if (data) {
+      return {
+        data,
+      };
     }
 
+    return new Error("Erro ao listar registros.");
+  } catch (error) {
+    console.error(error);
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao listar registros."
+    );
+  }
 };
 
-const create = async (dados: Omit<IDetalheProjeto, 'id'>): Promise<number | Error> => {
+export const getById = async (id: number): Promise<IDetalheProjeto | Error> => {
+  try {
+    const { data } = await Api.get(`/projeto/${id}`);
 
-    try {
-
-        const { data } = await Api.post<IDetalheProjeto>('/project/', dados);
-
-        if (data) {
-
-            return data.project_id;
-
-        }
-
-        return new Error('Erro ao criar registro.');
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao criar registro.');
-
+    if (data) {
+      return data;
     }
 
+    return new Error("Erro ao consultar registro.");
+  } catch (error) {
+    console.error(error);
+
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao consultar registro."
+    );
+  }
 };
 
-const updateById = async (id: number, dados: IDetalheProjeto): Promise<void | Error> => {
+export const create = async (
+  dados: Omit<IDetalheProjeto, "id">
+): Promise<number | Error> => {
+  try {
+    const { data } = await Api.post<any>("/projeto/", dados);
 
-    try {
-
-        await Api.put<IDetalheProjeto>(`/project/${id}`, dados);
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao atualizar registro.');
-
+    if (data) {
+      return data.id;
     }
 
-};
-const deleteById = async (id: number): Promise<void | Error> => { 
+    return new Error("Erro ao criar registro.");
+  } catch (error) {
+    console.error(error);
 
-    try {
-
-        await Api.delete<IDetalheProjeto>(`/project/${id}`);
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao apagar registro.');
-
-    }
-
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao criar registro."
+    );
+  }
 };
 
-export const ProjetosService = {
+export const updateById = async (
+  id: number,
+  dados: IDetalheProjeto
+): Promise<void | Error> => {
+  try {
+    await Api.put<IDetalheProjeto>(`/projeto/${id}`, dados);
+  } catch (error) {
+    console.error(error);
 
-    getAll,
-    getById,
-    create,
-    updateById,
-    deleteById,
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao atualizar registro."
+    );
+  }
+};
 
+export const deleteById = async (id: number): Promise<void | Error> => {
+  try {
+    await Api.delete<IDetalheProjeto>(`/projeto/${id}`);
+  } catch (error) {
+    console.error(error);
+
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao apagar registro."
+    );
+  }
 };

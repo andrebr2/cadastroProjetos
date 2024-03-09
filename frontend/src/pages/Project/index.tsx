@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 //import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import { ProjetosService } from 'services/api/Projetos/ProjetosService';
 import '../styles.css';
 
 const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,8 +25,20 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      })
      */
 }
+import { useEffect, useState } from "react";
+import { getAll } from "../../services/api/Projetos/ProjetosService";
 
 function Project() {
+    const [teams, setTeams] = useState([]);
+
+    const getTeams = async () => {
+        const data = await getAll();
+        setTeams(data);
+    }
+
+    useEffect(() => {
+        getTeams();
+    }, []);
 
     return (
 
@@ -60,5 +71,4 @@ function Project() {
     )
 }
 
-export default Project();
-
+export default Project;

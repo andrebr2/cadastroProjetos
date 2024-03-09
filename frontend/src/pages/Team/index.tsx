@@ -24,7 +24,22 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
      */
 }
 
+import React, { useState, useEffect } from 'react';
+import { getAll } from '../../services/api/Times/TimesService';
+
 function Team() {
+
+    const [teams, setTeams] = useState([]);
+
+    const getTeams = async () => {
+        const data = await getAll();
+        setTeams(data);
+    }
+
+    useEffect(() => {
+        getTeams();
+    }, []);
+
     return (
         <div className="pages-form-container">
             <div className="pages-card-bottom-container">
@@ -49,4 +64,4 @@ function Team() {
     )
 }
 
-export default Team();
+export default Team;

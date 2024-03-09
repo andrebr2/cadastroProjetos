@@ -1,7 +1,6 @@
 import { Environment } from "environment";
 import { Api } from "../axios-config";
 
-
 interface IListagemMembro {
 
     member_id: number;
@@ -29,122 +28,97 @@ interface IDetalheMembro {
 }
 
 type TMembrosComTotalCount = {
-
-    data: IListagemMembro[];
-    totalCount: number;
-
-}
-
-const getAll = async (page = 1, filter = ''): Promise<TMembrosComTotalCount | Error> => {
-
-    try {
-
-        const urlRelative = `/member?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&name_like=${filter}`
-
-        const { data, headers } = await Api.get(urlRelative);
-
-        if (data) {
-            return {
-                data,
-                totalCount: Number(headers['x-total-count']) || Environment.LIMITE_DE_LINHAS,
-            };
-        }
-
-        return new Error('Erro ao listar registros.');
-
-    } catch (error) {
-        console.error(error);
-        return new Error((error as { message: string }).message) || ('Erro ao listar registros.');
-    }
-
+  data: IListagemMembro[];
+  totalCount: number;
 };
 
-const getById = async (id: number): Promise<IDetalheMembro| Error> => {
+export const getAll = async (): Promise<any | Error> => {
+  try {
+    const urlRelative = `/profissional`;
 
-    try {
+    const { data } = await Api.get(urlRelative);
 
-        const { data } = await Api.get(`/member/${id}`);
-
-        if (data) {
-
-            return data;
-
-        }
-
-        return new Error('Erro ao consultar registro.');
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao consultar registro.');
-
+    if (data) {
+      return {
+        data,
+      };
     }
 
+    return new Error("Erro ao listar registros.");
+  } catch (error) {
+    console.error(error);
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao listar registros."
+    );
+  }
 };
 
-const create = async (dados: Omit<IDetalheMembro, 'id'>): Promise<number | Error> => {
+export const getById = async (id: number): Promise<IDetalheMembro | Error> => {
+  try {
+    const { data } = await Api.get(`/profissional/${id}`);
 
-    try {
-
-        const { data } = await Api.post<IDetalheMembro>('/member/', dados);
-
-        if (data) {
-
-            return data.member_id;
-
-        }
-
-        return new Error('Erro ao criar registro.');
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao criar registro.');
-
+    if (data) {
+      return data;
     }
 
+    return new Error("Erro ao consultar registro.");
+  } catch (error) {
+    console.error(error);
+
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao consultar registro."
+    );
+  }
 };
 
-const updateById = async (id: number, dados: IDetalheMembro): Promise<void | Error> => {
+export const create = async (
+  dados: Omit<IDetalheMembro, "id">
+): Promise<number | Error> => {
+  try {
+    const { data } = await Api.post<any>("/profissional/", dados);
 
-    try {
-
-        await Api.put<IDetalheMembro>(`/member/${id}`, dados);
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao atualizar registro.');
-
+    if (data) {
+      return data.id;
     }
 
-};
-const deleteById = async (id: number): Promise<void | Error> => { 
+    return new Error("Erro ao criar registro.");
+  } catch (error) {
+    console.error(error);
 
-    try {
-
-        await Api.delete<IDetalheMembro>(`/member/${id}`);
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        return new Error((error as { message: string }).message) || ('Erro ao apagar registro.');
-
-    }
-
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao criar registro."
+    );
+  }
 };
 
-export const MembrosService = {
+export const updateById = async (
+  id: number,
+  dados: IDetalheMembro
+): Promise<void | Error> => {
+  try {
+    await Api.put<IDetalheMembro>(`/profissional/${id}`, dados);
+  } catch (error) {
+    console.error(error);
 
-    getAll,
-    getById,
-    create,
-    updateById,
-    deleteById,
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao atualizar registro."
+    );
+  }
+};
 
+export const deleteById = async (id: number): Promise<void | Error> => {
+  try {
+    await Api.delete<IDetalheMembro>(`/profissional/${id}`);
+  } catch (error) {
+    console.error(error);
+
+    return (
+      new Error((error as { message: string }).message) ||
+      "Erro ao apagar registro."
+    );
+  }
 };
