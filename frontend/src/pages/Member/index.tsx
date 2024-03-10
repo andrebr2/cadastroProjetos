@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { getAll } from 'services/api/Projetos/ProjetosService';
+import { getAll } from 'services/api/Membros/MembrosService';
 
 import '../styles.css';
 import MemberList from 'components/MemberList';

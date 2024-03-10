@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-//import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { getAll } from 'services/api/Projetos/ProjetosService';
+import { getAll } from 'services/api/Times/TimesService';
 import '../styles.css';
 import TeamList from 'components/TeamList';
 

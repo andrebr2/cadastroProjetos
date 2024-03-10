@@ -41,7 +41,7 @@ export const getAll = async (): Promise<any | Error> => {
 
 export const getById = async (id: number): Promise<IDetalheTime | Error> => {
   try {
-    const { data } = await Api.get(`/team/${id}`);
+    const { data } = await Api.get(`/time/${id}`);
 
     if (data) {
       return data;
@@ -59,10 +59,10 @@ export const getById = async (id: number): Promise<IDetalheTime | Error> => {
 };
 
 export const create = async (
-  dados: Omit<IDetalheTime, "id">
+  dados: any
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<any>("/team/", dados);
+    const { data } = await Api.post<any>("/time/", dados);
 
     if (data) {
       return data.id;
@@ -84,7 +84,7 @@ export const updateById = async (
   dados: IDetalheTime
 ): Promise<void | Error> => {
   try {
-    await Api.put<IDetalheTime>(`/team/${id}`, dados);
+    await Api.put<IDetalheTime>(`/time/${id}`, dados);
   } catch (error) {
     console.error(error);
 
@@ -97,7 +97,7 @@ export const updateById = async (
 
 export const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete<IDetalheTime>(`/team/${id}`);
+    await Api.delete<IDetalheTime>(`/time/${id}`);
   } catch (error) {
     console.error(error);
 
