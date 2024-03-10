@@ -1,5 +1,6 @@
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { deleteById, updateById } from 'services/api/Times/TimesService';
+import { deleteById } from 'services/api/Times/TimesService';
+import { Link } from 'react-router-dom';
 
 interface TeamListProps {
   teams: any;
@@ -21,23 +22,27 @@ const TeamList = ({ teams }: TeamListProps) => {
             </tr>
           </thead>
           <tbody>
-            {teams?.map(({ id, name, project }: { id: any; name: any; project: any }) => (
-              <tr>
+            {teams?.map(({ id, name, Project }: { id: any; name: any; Project: any }, index: number) => (
+              <tr key={index}>
                 <td>{name}</td>
-                <td>{project}</td>
+                <td>{Project?.name}</td>
                 <td>
-                <AiFillEdit size={20} className='icon' />
+                  <Link to={`/team/update/${id}`}>
+                    <AiFillEdit cursor='pointer' size={20} className='icon' />
+                  </Link>
                 </td>
                 <td>
-                <AiFillDelete
+                  <AiFillDelete
+                    cursor='pointer'
                     size={20}
                     onClick={() => {
                       const confirmDelete = window.confirm(
-                        `Confirma deletar Time ${name}?`
+                        `Confirma deletar ${name}?`
                       );
                       if (confirmDelete) {
                         deleteById(id)
                         alert('Time deletado com sucesso!');
+                        window.location.reload();
                       }
                     }}
                     className='icon'

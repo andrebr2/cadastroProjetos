@@ -1,5 +1,6 @@
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { deleteById, updateById } from 'services/api/Projetos/ProjetosService';
+import { deleteById } from 'services/api/Projetos/ProjetosService';
+import { Link } from 'react-router-dom';
 
 interface ProjectListProps {
   projects: any;
@@ -7,6 +8,13 @@ interface ProjectListProps {
 
 function ProjectList({ projects }: ProjectListProps) {
   if (!projects) return <></>
+
+  const getTeamsString = (teams: any) => {
+    if (!teams || teams.length === 0) return '';
+
+    return teams.map(({ name }: { name: string }) => name).join(', ');
+  }
+
   return (
     <div className='list'>
       <h3 className='list-title'>Lista de Projetos</h3>
@@ -16,30 +24,34 @@ function ProjectList({ projects }: ProjectListProps) {
             <tr>
               <th>Nome do Projeto</th>
               <th>Cliente do Projeto</th>
-              <th>Time do Projeto</th>
+              <th>Times</th>
               <th>Editar</th>
               <th>Deletar</th>
             </tr>
           </thead>
           <tbody>
-            {projects?.map(({ id, name, client_name, team }: { id: any;name: any; client_name: any; team: any }) => (
-              <tr>
+            {projects?.map(({ id, name, client_name, Teams }: { id: any, name: any; client_name: any; Teams: any }) => (
+              <tr key={id}>
                 <td>{name}</td>
                 <td>{client_name}</td>
-                <td>{team}</td>
+                <td>{getTeamsString(Teams)}</td>
                 <td>
-                  <AiFillEdit size={20} className='icon' />
+                  <Link to={`/project/update/${id}`}>
+                    <AiFillEdit size={20} className='icon' />
+                  </Link>
                 </td>
                 <td>
-                <AiFillDelete
+                  <AiFillDelete
+                    cursor='pointer'
                     size={20}
                     onClick={() => {
                       const confirmDelete = window.confirm(
-                        `Confirma deletar Projeto ${name}?`
+                        `Confirma deletar ${name}?`
                       );
                       if (confirmDelete) {
-                        deleteById(id)
+                        deleteById(id);
                         alert('Projeto deletado com sucesso!');
+                        window.location.reload();
                       }
                     }}
                     className='icon'

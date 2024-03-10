@@ -54,7 +54,7 @@ export const getAll = async (): Promise<any | Error> => {
   }
 };
 
-export const getById = async (id: number): Promise<IDetalheProjeto | Error> => {
+export const getById = async (id: number): Promise<any> => {
   try {
     const { data } = await Api.get(`/projeto/${id}`);
 
@@ -97,9 +97,10 @@ export const create = async (
 export const updateById = async (
   id: number,
   dados: IDetalheProjeto
-): Promise<void | Error> => {
+): Promise<boolean | Error> => {
   try {
-    await Api.put<IDetalheProjeto>(`/projeto/${id}`, dados);
+    const response = await Api.put<IDetalheProjeto>(`/projeto/${id}`, dados);
+    return response.status === 200;
   } catch (error) {
     console.error(error);
 
