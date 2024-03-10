@@ -34,7 +34,6 @@ function UpdateMembro() {
     const getMembro = async (id: string) => {
         const member = await getById(+id);
         if (!member) return;
-        console.log('member', member);
         setMembro({
             ...member,
             team: member.TeamId

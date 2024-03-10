@@ -17,7 +17,7 @@ function CadastroTeam() {
         const response = await create(time);
         if (response) {
             alert('Time cadastrado com sucesso!');
-            navigate('/member');
+            navigate('/team');
         } else {
             alert('Erro ao cadastrar time!');
         }
@@ -62,7 +62,7 @@ function CadastroTeam() {
                         <button type="submit" className="btn btn-primary pages-btn">Salvar</button>
                     </div>
                 </form >
-                <Link to="/">
+                <Link to="/team">
                     <button className="btn btn-primary pages-btn mt-3">Cancelar</button>
                 </Link>
             </div >

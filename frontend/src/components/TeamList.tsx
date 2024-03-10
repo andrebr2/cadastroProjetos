@@ -1,4 +1,5 @@
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 interface TeamListProps {
   teams: any;
@@ -20,15 +21,17 @@ const TeamList = ({ teams }: TeamListProps) => {
             </tr>
           </thead>
           <tbody>
-            {teams?.map(({ name, project }: { name: any; project: any }) => (
-              <tr>
+            {teams?.map(({ id, name, Project }: { id: any; name: any; Project: any }, index: number) => (
+              <tr key={index}>
                 <td>{name}</td>
-                <td>{project}</td>
+                <td>{Project?.name}</td>
                 <td>
-                  <AiFillEdit size={20} className='icon' />
+                  <Link to={`/team/update/${id}`}>
+                    <AiFillEdit cursor='pointer' size={20} className='icon' />
+                  </Link>
                 </td>
                 <td>
-                  <AiFillDelete size={20} className='icon' />
+                  <AiFillDelete cursor='pointer' size={20} className='icon' />
                 </td>
               </tr>
             ))}
