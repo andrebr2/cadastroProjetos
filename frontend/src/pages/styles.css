@@ -4,6 +4,12 @@
   padding: 20px;
 }
 
+.pages-form-class-container {
+  max-width: 880px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
 .pages-form {
   width: calc(100% - 20px);
 }
@@ -52,13 +58,13 @@
 }
 
 .list-table-container {
-  max-width: 100%;
+  max-width: 840px;
   height: 500px;
   overflow: auto;
 }
 .list {
   display: flex;
-  width: 45%;
+  width: 100%;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;

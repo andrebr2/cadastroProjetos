@@ -1,3 +1,4 @@
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 interface MemberListProps {
     members: any;
@@ -14,6 +15,8 @@ interface MemberListProps {
               <tr>
                 <th>Nome do Membro</th>
                 <th>Especialidade</th>
+                <th>Editar</th>
+                <th>Deletar</th>
               </tr>
             </thead>
             <tbody>
@@ -21,6 +24,12 @@ interface MemberListProps {
                 <tr>
                   <td>{name}</td>
                   <td>{role}</td>
+                  <td>
+                  <AiFillEdit size={20} className='icon' />
+                </td>
+                <td>
+                  <AiFillDelete size={20} className='icon' />
+                </td>
                 </tr>
               ))}
             </tbody>

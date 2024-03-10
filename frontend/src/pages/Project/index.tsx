@@ -21,7 +21,7 @@ function Project() {
 
     return (
 
-        <div className="pages-form-container">
+        <div className="pages-form-class-container">
             <div className="pages-card-bottom-container">
                 <button onClick={() => navigate('/project/register')} className="btn btn-primary pages-btn">
                     Cadastrar projeto
