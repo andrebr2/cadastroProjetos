@@ -18,7 +18,6 @@ function UpdateMembro() {
         const id = window.location.pathname.split('/').pop();
         if (!id) return;
         const response = await updateById(+id, membro);
-        console.log('response', response);
         if (response) {
             alert('Membro atualizado com sucesso!');
             navigate('/member');

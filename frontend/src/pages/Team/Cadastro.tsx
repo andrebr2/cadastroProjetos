@@ -54,7 +54,7 @@ function CadastroTeam() {
                         <label htmlFor="teamName">Informe o nome do time</label>
                         <input name="name" className="form-control" id="teamName" onChange={handleChange}/>
                         <label htmlFor="project_id">Projeto</label>
-                        <select name="projeto" onChange={handleChange}>
+                        <select name="project" onChange={handleChange}>
                             {getProjectList()}
                         </select>
                     </div>
