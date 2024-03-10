@@ -5,7 +5,7 @@ import { getAll } from "services/api/Times/TimesService";
 
 import '../styles.css';
 
-function CadastroProject() {
+function UpdateProject() {
 
     const [project, setProject] = useState({});
     const [teams, setTeams] = useState([]);
@@ -52,22 +52,16 @@ function CadastroProject() {
                     <div className="form-group pages-form-group">
                         <label htmlFor="name">Nome do projeto</label>
                         <input name="name" className="form-control" id="project_name" onChange={handleChange} required/>
-                        
                         <label htmlFor="client_name">Nome do cliente</label>
                         <input name="client_name" type="client_name" className="form-control" id="project_name" onChange={handleChange} required/>
-
                         <label htmlFor="goal">Objetivo do projeto</label>
                         <input name="goal" className="form-control" id="goal" onChange={handleChange} required/>
-
                         <label htmlFor="startDate">Data inicial</label>
                         <input name="startDate" type="date" className="form-control" id="startDate" onChange={handleChange} required/>
-
                         <label htmlFor="finalDate">Data final</label>
                         <input name="finalDate" type="date" className="form-control" id="finalDate" onChange={handleChange} required/>
-
                         <label htmlFor="price">Preço do projeto</label>
                         <input name="price" type="price" className="form-control" id="price" onChange={handleChange} required/>
-
                         <label htmlFor="team_id">Time</label>
                         <select name="team" required onChange={handleChange}>
                             {getTeamList()}
@@ -85,4 +79,4 @@ function CadastroProject() {
     )
 }
 
-export default CadastroProject;
+export default UpdateProject;

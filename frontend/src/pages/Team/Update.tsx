@@ -5,7 +5,7 @@ import { getAll } from 'services/api/Projetos/ProjetosService';
 
 import '../styles.css';
 
-function CadastroTeam() {
+function UpdateTeam() {
 
     const navigate = useNavigate();
 
@@ -54,7 +54,7 @@ function CadastroTeam() {
                         <label htmlFor="teamName">Informe o nome do time</label>
                         <input name="name" className="form-control" id="teamName" onChange={handleChange}/>
                         <label htmlFor="project_id">Projeto</label>
-                        <select name="projeto" onChange={handleChange}>
+                        <select name="projeto" required onChange={handleChange}>
                             {getProjectList()}
                         </select>
                     </div>
@@ -70,4 +70,4 @@ function CadastroTeam() {
     )
 }
 
-export default CadastroTeam;
+export default UpdateTeam;
