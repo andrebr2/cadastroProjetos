@@ -1,4 +1,5 @@
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { deleteById, updateById } from 'services/api/Membros/MembrosService';
 
 interface MemberListProps {
     members: any;
@@ -20,7 +21,7 @@ interface MemberListProps {
               </tr>
             </thead>
             <tbody>
-              {members?.map(({ name, role }:{name: any; role: any}) => (
+              {members?.map(({ id, name, role }:{id: any; name: any; role: any}) => (
                 <tr>
                   <td>{name}</td>
                   <td>{role}</td>
@@ -28,7 +29,19 @@ interface MemberListProps {
                   <AiFillEdit size={20} className='icon' />
                 </td>
                 <td>
-                  <AiFillDelete size={20} className='icon' />
+                <AiFillDelete
+                    size={20}
+                    onClick={() => {
+                      const confirmDelete = window.confirm(
+                        `Confirma deletar Membro ${name}?`
+                      );
+                      if (confirmDelete) {
+                        deleteById(id)
+                        alert('Membro deletado com sucesso!');
+                      }
+                    }}
+                    className='icon'
+                  />
                 </td>
                 </tr>
               ))}

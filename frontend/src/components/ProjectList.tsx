@@ -1,10 +1,11 @@
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { deleteById, updateById } from 'services/api/Projetos/ProjetosService';
 
 interface ProjectListProps {
   projects: any;
 }
 
-function ProjectList({ projects }: ProjectListProps )  {
+function ProjectList({ projects }: ProjectListProps) {
   if (!projects) return <></>
   return (
     <div className='list'>
@@ -21,7 +22,7 @@ function ProjectList({ projects }: ProjectListProps )  {
             </tr>
           </thead>
           <tbody>
-            {projects?.map(({ name, client_name, team }: {name: any; client_name: any; team: any}) => (
+            {projects?.map(({ id, name, client_name, team }: { id: any;name: any; client_name: any; team: any }) => (
               <tr>
                 <td>{name}</td>
                 <td>{client_name}</td>
@@ -30,7 +31,19 @@ function ProjectList({ projects }: ProjectListProps )  {
                   <AiFillEdit size={20} className='icon' />
                 </td>
                 <td>
-                  <AiFillDelete size={20} className='icon' />
+                <AiFillDelete
+                    size={20}
+                    onClick={() => {
+                      const confirmDelete = window.confirm(
+                        `Confirma deletar Projeto ${name}?`
+                      );
+                      if (confirmDelete) {
+                        deleteById(id)
+                        alert('Projeto deletado com sucesso!');
+                      }
+                    }}
+                    className='icon'
+                  />
                 </td>
               </tr>
             ))}
