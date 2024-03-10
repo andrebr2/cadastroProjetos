@@ -9,6 +9,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const project_id = (event.target as any).score.value;
 
     // create()
+    
 }
 
 function CadastroTeam() {

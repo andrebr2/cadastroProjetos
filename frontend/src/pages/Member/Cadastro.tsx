@@ -10,18 +10,17 @@ function CadastroMembro() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const member_name = (event.target as any).score.value;
-        const member_address = (event.target as any).score.value;
-        const member_birthdate = (event.target as any).score.value;
-        const member_gender = (event.target as any).score.value;
-        const member_race = (event.target as any).score.value;
-        const member_role = (event.target as any).score.value;
-        const team_id = (event.target as any).score.value;
+        const name = (event.target as any).score.value;
+        const address = (event.target as any).score.value;
+        const birthdate = (event.target as any).score.value;
+        const gender = (event.target as any).score.value;
+        const race = (event.target as any).score.value;
+        const role = (event.target as any).score.value;
 
 
         const config: AxiosRequestConfig = {
             method: 'POST',
-            url: '/project',
+            url: '/member',
             data: {}
         }
 
@@ -48,8 +47,6 @@ function CadastroMembro() {
                         <input type="member_race" className="form-control" id="member_race" />
                         <label htmlFor="member_role">Informe a especialidade</label>
                         <input type="member_role" className="form-control" id="member_role" />
-                        <label htmlFor="team_id">Informe o código do time</label>
-                        <input type="team_id" className="form-control" id="team_id" />
                     </div>
                     <div className="pages-form-btn-container">
                         <button type="submit" className="btn btn-primary pages-btn">Salvar</button>

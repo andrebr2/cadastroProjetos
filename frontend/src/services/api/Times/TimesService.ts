@@ -2,15 +2,15 @@ import { Environment } from "environment";
 import { Api } from "../axios-config";
 
 interface IListagemTime {
-  team_id: number;
+  id: number;
   team_name: string;
-  project_id: number;
+  project?: number | String;
 }
 
 interface IDetalheTime {
-  team_id: number;
+  id: number;
   team_name: string;
-  project_id: number;
+  project?: number | String;
 }
 
 type TTimesComTotalCount = {

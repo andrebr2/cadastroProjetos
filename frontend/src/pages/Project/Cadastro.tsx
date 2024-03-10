@@ -11,9 +11,18 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const startDAte = (event.target as any).score.value;
     const finalDate = (event.target as any).score.value;
     const price = (event.target as any).score.value;
+    const team = (event.target as any).score.value;
+/*
+    const config: AxiosRequestConfig = {
+        method: 'POST',
+        url: '/project',
+        data: {}
+    }
 
-    // const data = {project_name, goal, startDAte, finalDate, price}
-    // create(data)
+    axios(config).then(response => {
+        navigate("/");
+    })
+    */
 }
 
 function CadastroProject() {
@@ -33,6 +42,8 @@ function CadastroProject() {
                         <input type="finalDate" className="form-control" id="finalDate" />
                         <label htmlFor="price">Informe o preço do projeto</label>
                         <input type="price" className="form-control" id="price" />
+                        <label htmlFor="team">Informe o time do projeto</label>
+                        <input type="team" className="form-control" id="team" />
                     </div>
                     <div className="pages-form-btn-container">
                         <button type="submit" className="btn btn-primary pages-btn">Salvar</button>

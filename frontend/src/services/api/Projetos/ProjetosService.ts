@@ -3,23 +3,27 @@ import { Api } from "../axios-config";
 
 interface IListagemProjeto {
 
-    project_id: number;
-    project_name: string;
+    id: number;
+    name: string;
+    client_name: String
     goal: string;
     startDate: Date;
     finalDate: Date;
     price: number;
+    team?: String | Number
 
 }
 
 interface IDetalheProjeto {
 
-    project_id: number;
-    project_name: string;
-    goal: string;
-    startDate: Date;
-    finalDate: Date;
-    price: number;
+  id: number;
+  name: string;
+  client_name: String
+  goal: string;
+  startDate: Date;
+  finalDate: Date;
+  price: number;
+  team?: String | Number
 
 }
 

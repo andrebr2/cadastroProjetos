@@ -1,9 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { getAll } from 'services/api/Projetos/ProjetosService';
 
 import '../styles.css';
+import MemberList from 'components/MemberList';
 
 function Member() {
 
@@ -21,9 +22,17 @@ function Member() {
 
 
     return (
-        <>
-            <button onClick={() => navigate('/member/register')}>Cadastrar membro</button>
-        </>
+
+        <div className="pages-form-container">
+            <div className="pages-card-bottom-container">
+                <button onClick={() => navigate('/member/register')} className="btn btn-primary pages-btn">
+                    Cadastrar membro
+                </button>
+                <br/>
+                <MemberList members={membros} />
+            </div >
+        </div >
+
     )
 }
 

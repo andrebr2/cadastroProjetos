@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 //import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { getAll } from 'services/api/Projetos/ProjetosService';
 import '../styles.css';
+import TeamList from 'components/TeamList';
 
 
 function Team() {
@@ -20,9 +21,17 @@ function Team() {
     }, []);
 
     return (
-        <>
-            <button onClick={() => navigate('/team/register')}>Cadastrar time</button>
-        </>
+
+        <div className="pages-form-container">
+            <div className="pages-card-bottom-container">
+                <button onClick={() => navigate('/team/register')} className="btn btn-primary pages-btn">
+                    Cadastrar time
+                </button>
+                <br/>
+                <TeamList teams={teams} />
+            </div >
+        </div >
+
     )
 }
 

@@ -3,27 +3,26 @@ import { Api } from "../axios-config";
 
 interface IListagemMembro {
 
-    member_id: number;
-    member_name: string;
-    member_address: string;
-    member_birthdate: Date;
-    member_gender: number;
-    member_race: number;
-    member_role: number;
-    teamId: number;
-
+    id: number;
+    name: string;
+    address: string;
+    birthdate: Date;
+    gender: 'Masculino' | 'Feminino'
+    race: 'Branco' | 'Negro' | 'Pardo' | 'Indigina' | 'Amarelo'
+    role: 'Analista' | 'Desenvolvedor' | 'DBA' | 'Designer' | 'QA' | 'Delivery' | 'PO'
+    price: number
 }
 
 interface IDetalheMembro {
 
-    member_id: number;
-    member_name: string;
-    member_adress: string;
-    member_birthdate: Date;
-    member_gender: number;
-    member_race: number;
-    member_role: number;
-    teamId: number;
+  id: number;
+    name: string;
+    address: string;
+    birthdate: Date;
+    gender: 'Masculino' | 'Feminino'
+    race: 'Branco' | 'Negro' | 'Pardo' | 'Indigina' | 'Amarelo'
+    role: 'Analista' | 'Desenvolvedor' | 'DBA' | 'Designer' | 'QA' | 'Delivery' | 'PO'
+    price: number
 
 }
 
