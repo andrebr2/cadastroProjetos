@@ -26,24 +26,6 @@ function CadastroProject() {
         setProject({ ...project, [event.target.name]: event.target.value })
     }
 
-    const getTimes = async () => {
-        const response = await getAll();
-        if (!response) return;
-        setTeams(response.data.map((team: any) => ({ name: team.name, id: team.id })))
-    }
-
-    const getTeamList = () => {
-        if (teams.length === 0) return <option value="">Nenhum projeto cadastrado</option>
-
-        let options = [<option value="" key={0}>Selecione um time</option>]
-        teams.map((project: any) => options.push(<option key={project.id} value={project.id}>{project.name}</option>))
-        return options
-    }
-
-    useEffect(() => {
-        getTimes();
-    }, [])
-
     return (
         <div className="pages-form-container">
             <div className="pages-card-bottom-container">
@@ -67,11 +49,6 @@ function CadastroProject() {
 
                         <label htmlFor="price">Preço do projeto</label>
                         <input name="price" type="price" className="form-control" id="price" onChange={handleChange} required/>
-
-                        <label htmlFor="team_id">Time</label>
-                        <select name="team" required onChange={handleChange}>
-                            {getTeamList()}
-                        </select>
                     </div>
                     <div className="pages-form-btn-container">
                         <button type="submit" className="btn btn-primary pages-btn">Salvar</button>
