@@ -31,10 +31,10 @@ const MemberList = ({ members }: MemberListProps) => {
                 <td>{role}</td>
                 <td>{Team?.name}</td>
                 <td>
-                  <AiFillEdit onClick={() => navigate(`/member/update/${id}`)} size={20} className='icon' />
+                  <AiFillEdit cursor='pointer' onClick={() => navigate(`/member/update/${id}`)} size={20} className='icon' />
                 </td>
                 <td>
-                  <AiFillDelete size={20} className='icon' />
+                  <AiFillDelete cursor='pointer' size={20} className='icon' />
                 </td>
               </tr>
             ))}
