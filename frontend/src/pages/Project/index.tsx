@@ -10,8 +10,9 @@ function Project() {
     const [projects, setProjects] = useState([]);
 
     const getProjects = async () => {
-        const data = await getAll();
-        setProjects(data);
+        const response = await getAll();
+        if (!response) return;
+        setProjects(response.data);
     }
 
     useEffect(() => {

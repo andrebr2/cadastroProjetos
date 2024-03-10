@@ -4,6 +4,7 @@ interface TeamListProps {
   }
   
   const TeamList = ({ teams }: TeamListProps  ) => {
+    if (!teams) return <></>
     return (
       <div className='list'>
         <h3 className='list-title'>Lista de Times</h3>

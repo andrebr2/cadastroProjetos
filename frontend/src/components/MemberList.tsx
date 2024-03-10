@@ -4,6 +4,7 @@ interface MemberListProps {
   }
   
   const MemberList = ({ members }: MemberListProps ) => {
+    if (!members) return <></>;
     return (
       <div className='list'>
         <h3 className='list-title'>Lista de Membros</h3>

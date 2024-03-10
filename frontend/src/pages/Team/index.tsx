@@ -12,8 +12,9 @@ function Team() {
     const [teams, setTeams] = useState([]);
 
     const getTeams = async () => {
-        const data = await getAll();
-        setTeams(data);
+        const response = await getAll();
+        if (!response) return;
+        setTeams(response.data);
     }
 
     useEffect(() => {

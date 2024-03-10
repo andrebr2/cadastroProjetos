@@ -5,7 +5,7 @@ interface ProjectListProps {
 }
 
 function ProjectList({ projects }: ProjectListProps )  {
-  if (!projects) return
+  if (!projects) return <></>
   return (
     <div className='list'>
       <h3 className='list-title'>Lista de Projetos</h3>

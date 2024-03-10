@@ -12,8 +12,9 @@ function Member() {
     const navigate = useNavigate();
 
     const getMembros = async () => {
-        let data = await getAll();
-        setMembros(membros);
+        const response = await getAll();
+        if (!response) return;
+        setMembros(response.data);
     }
 
     useEffect(() => {
