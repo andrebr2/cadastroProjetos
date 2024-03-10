@@ -42,6 +42,7 @@ function CadastroMembro() {
                             <option value="Masculino">Masculino</option>
                             <option value="Feminino">Feminino</option>
                         </select>
+                        <br/>
                         <label htmlFor="member_race">Raça</label>
                         <select name="race" onChange={handleChange} required>
                             <option value="">Selecione uma raça</option>
@@ -51,6 +52,7 @@ function CadastroMembro() {
                             <option value="Indígena">Indígena</option>
                             <option value="Amarelo">Amarelo</option>
                         </select>
+                        <br/>
                         <label htmlFor="member_role">Especialidade</label>
                         <select name="role" onChange={handleChange} required>
                             <option value="">Selecione uma especialidade</option>
