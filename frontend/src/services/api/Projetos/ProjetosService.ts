@@ -74,10 +74,10 @@ export const getById = async (id: number): Promise<IDetalheProjeto | Error> => {
 };
 
 export const create = async (
-  dados: Omit<IDetalheProjeto, "id">
+  dados: any
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<any>("/projeto/", dados);
+    const { data } = await Api.post<any>("/projeto", dados);
 
     if (data) {
       return data.id;

@@ -1,49 +1,71 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { create } from "../../services/api/Projetos/ProjetosService";
+import { getAll } from "services/api/Times/TimesService";
 
 import '../styles.css';
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const project_name = (event.target as any).score.value;
-    const goal = (event.target as any).score.value;
-    const startDAte = (event.target as any).score.value;
-    const finalDate = (event.target as any).score.value;
-    const price = (event.target as any).score.value;
-    const team = (event.target as any).score.value;
-/*
-    const config: AxiosRequestConfig = {
-        method: 'POST',
-        url: '/project',
-        data: {}
+function CadastroProject() {
+
+    const [project, setProject] = useState({});
+    const [teams, setTeams] = useState([]);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const response = await create(project);
+        if (response) {
+            alert('Projeto cadastrado com sucesso!');
+            navigate('/project');
+        } else {
+            alert('Erro ao cadastrar projeto!');
+        }
+    }
+    
+    const handleChange = (event: any) => {
+        setProject({ ...project, [event.target.name]: event.target.value })
     }
 
-    axios(config).then(response => {
-        navigate("/");
-    })
-    */
-}
+    const getTimes = async () => {
+        const response = await getAll();
+        if (!response) return;
+        setTeams(response.data.map((team: any) => ({ name: team.name, id: team.id })))
+    }
 
-function CadastroProject() {
+    const getTeamList = () => {
+        if (teams.length === 0) return <option value="">Nenhum projeto cadastrado</option>
+
+        let options = [<option value="" key={0}>Selecione um time</option>]
+        teams.map((project: any) => options.push(<option key={project.id} value={project.id}>{project.name}</option>))
+        return options
+    }
+
+    useEffect(() => {
+        getTimes();
+    }, [])
+
     return (
         <div className="pages-form-container">
             <div className="pages-card-bottom-container">
                 <h3>Cadastro de Projeto</h3>
                 <form className="pages-form" onSubmit={handleSubmit}>
                     <div className="form-group pages-form-group">
-                        <label htmlFor="project_name">Informe o nome do projeto</label>
-                        <input type="project_name" className="form-control" id="project_name" />
-                        <label htmlFor="goal">Informe o objetivo do projeto</label>
-                        <input type="goal" className="form-control" id="goal" />
-                        <label htmlFor="startDate">Informe a data inicial</label>
-                        <input type="startDate" className="form-control" id="startDate" />
-                        <label htmlFor="finalDate">Informe a data final</label>
-                        <input type="finalDate" className="form-control" id="finalDate" />
-                        <label htmlFor="price">Informe o preço do projeto</label>
-                        <input type="price" className="form-control" id="price" />
-                        <label htmlFor="team">Informe o time do projeto</label>
-                        <input type="team" className="form-control" id="team" />
+                        <label htmlFor="name">Nome do projeto</label>
+                        <input name="name" className="form-control" id="project_name" onChange={handleChange} required/>
+                        <label htmlFor="client_name">Nome do cliente</label>
+                        <input name="client_name" type="client_name" className="form-control" id="project_name" onChange={handleChange} required/>
+                        <label htmlFor="goal">Objetivo do projeto</label>
+                        <input name="goal" className="form-control" id="goal" onChange={handleChange} required/>
+                        <label htmlFor="startDate">Data inicial</label>
+                        <input name="startDate" type="date" className="form-control" id="startDate" onChange={handleChange} required/>
+                        <label htmlFor="finalDate">Data final</label>
+                        <input name="finalDate" type="date" className="form-control" id="finalDate" onChange={handleChange} required/>
+                        <label htmlFor="price">Preço do projeto</label>
+                        <input name="price" type="price" className="form-control" id="price" onChange={handleChange} required/>
+                        <label htmlFor="team_id">Time</label>
+                        <select name="team" required onChange={handleChange}>
+                            {getTeamList()}
+                        </select>
                     </div>
                     <div className="pages-form-btn-container">
                         <button type="submit" className="btn btn-primary pages-btn">Salvar</button>
