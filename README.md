@@ -18,6 +18,10 @@ Para rodar o projeto, basta ter docker instalado e rodar o comando:
 - React router DOM
 - Bootstrap
 
+# Repositório back-end
+
+https://github.com/Stroonn/es2-backend
+
 # Aplicacão back-end rodando em:
 
 ### http://54.161.66.78:3000/
