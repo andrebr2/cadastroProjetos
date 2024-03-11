@@ -56,5 +56,5 @@ Para rodar o projeto, basta ter docker instalado e rodar o comando:
 
 # Anotações SCRUM
 
-https://unioestebr-my.sharepoint.com/:o:/g/personal/gabriel_casseb_unioeste_br/EmFXf2kYKyZLlMYn-7izig4BRhFgS1Jy0JhG4tJo3pXRew?e=KjD1fU
+https://unioestebr-my.sharepoint.com/personal/gabriel_casseb_unioeste_br/_layouts/15/Doc.aspx?sourcedoc={697f5761-2b18-4b26-94c6-27fbb8b38a0e}&action=edit&wd=target%28ES2%20-%20P1.one%7C2fe67a25-25a9-40c6-bfbd-d99111ecb541%2FSprint%201%20Planning%7C2044e4c5-b8bc-4641-99e6-ed7d24ff08b3%2F%29&wdorigin=NavigationUrl
 
