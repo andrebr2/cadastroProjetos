@@ -50,3 +50,7 @@ Para rodar o projeto, basta ter docker instalado e rodar o comando:
 
 <img src="https://cdn.discordapp.com/attachments/1005328503429922827/1216587630217789440/image.png?ex=6600ee86&is=65ee7986&hm=033966da6baf682ac43e9ad2113da56870f5e67703fe4c3ce493fc431a9ef6f9&">
 
+# Anotações SCRUM
+
+https://unioestebr-my.sharepoint.com/:o:/g/personal/gabriel_casseb_unioeste_br/EmFXf2kYKyZLlMYn-7izig4BRhFgS1Jy0JhG4tJo3pXRew?e=KjD1fU
+
