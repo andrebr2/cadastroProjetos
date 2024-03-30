@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { create } from 'services/api/Times/TimesService';
 import { getAll } from 'services/api/Projetos/ProjetosService';
+import {ReactComponent as Edit} from '../../assets/img/edit.svg';
 
 import '../styles.css';
 
@@ -46,7 +47,8 @@ function CadastroTeam() {
     }, [])
 
     return (
-        <div className="pages-form-container">
+        <div className="pages-form-register-container">
+            <div className="pages-form-container">
             <div className="pages-card-bottom-container">
                 <h3>Cadastro de Time</h3>
                 <form className="pages-form" onSubmit={handleSubmit}>
@@ -62,11 +64,15 @@ function CadastroTeam() {
                         <button type="submit" className="btn btn-primary pages-btn">Salvar</button>
                     </div>
                 </form >
-                <Link to="/team">
+                <Link to="/">
                     <button className="btn btn-primary pages-btn mt-3">Cancelar</button>
                 </Link>
             </div >
         </div >
+        <div className="pages-image-register-container">
+                <Edit />
+            </div>
+        </div>
     )
 }
 

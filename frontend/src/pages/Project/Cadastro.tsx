@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { create } from "../../services/api/Projetos/ProjetosService";
-import { getAll } from "services/api/Times/TimesService";
+import {ReactComponent as Edit} from '../../assets/img/edit.svg';
 
 import '../styles.css';
 
@@ -27,7 +27,8 @@ function CadastroProject() {
     }
 
     return (
-        <div className="pages-form-container">
+        <div className="pages-form-register-container">
+            <div className="pages-form-container">
             <div className="pages-card-bottom-container">
                 <h3>Cadastro de Projeto</h3>
                 <form className="pages-form" onSubmit={handleSubmit}>
@@ -58,7 +59,13 @@ function CadastroProject() {
                     <button className="btn btn-primary pages-btn mt-3">Cancelar</button>
                 </Link>
             </div >
+            
         </div >
+        <div className="pages-image-register-container">
+                <Edit />
+            </div>
+        </div>
+        
     )
 }
 
